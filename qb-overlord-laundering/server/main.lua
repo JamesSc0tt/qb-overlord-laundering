@@ -1,3 +1,5 @@
+local QBCore = exports['qb-core']:GetCoreObject()
+
 RegisterServerEvent('qb-overlord-laundering:use', function(key)
 	local machine = CONFIG['Machines'][key]
 	local Player = QBCore.Functions.GetPlayer(source)

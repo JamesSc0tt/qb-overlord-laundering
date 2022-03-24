@@ -1,3 +1,5 @@
+local QBCore = exports['qb-core']:GetCoreObject()
+
 local currentMachine = -1
 local globalCoords = vector3(0,0,0)
 
@@ -7,7 +9,7 @@ Citizen.CreateThread(function()
 
 		local displayed = false
 		for k,v in pairs(CONFIG['Machines']) do
-			if k == currentMachine and not v.available then
+			if k == currentMachine and not v.available and #(v.vec - globalCoords) < 5.0 then
 				if v.finished then
 					DrawText3Ds(v.vec.x, v.vec.y, v.vec.z, '~g~E~w~ - Collect')
 					if IsControlJustPressed(0,38) then

@@ -1,6 +1,3 @@
-QBCore = exports['qb-core']:GetSharedObject() -- do not touch
-
-
 CONFIG = {} -- do not touch
 
 CONFIG['BaseTime'] = math.random(20,35) -- time in minutes the washing machine always takes
