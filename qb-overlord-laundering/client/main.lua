@@ -1,5 +1,6 @@
 local currentMachine = -1
 local globalCoords = vector3(0,0,0)
+local notWashing = true
 
 Citizen.CreateThread(function()
 	while true do Citizen.Wait(0)
@@ -7,19 +8,21 @@ Citizen.CreateThread(function()
 
 		local displayed = false
 		for k,v in pairs(CONFIG['Machines']) do
-			if k == currentMachine and not v.available then
+			if k == currentMachine and not v.available and #(v.vec - globalCoords) < 5.0 then
 				if v.finished then
 					DrawText3Ds(v.vec.x, v.vec.y, v.vec.z, '~g~E~w~ - Collect')
 					if IsControlJustPressed(0,38) then
 						TriggerServerEvent('qb-overlord-laundering:collect', k)
 						currentMachine = -1
+						notWashing = true
 					end
 				else
 					DrawText3Ds(v.vec.x, v.vec.y, v.vec.z, '~r~Washing...')
+					notWashing = false
 				end
 			else
 				if not displayed and #(v.vec - globalCoords) < 1.0 then
-					if v.available then
+					if v.available and notWashing then
 						DrawText3Ds(v.vec.x, v.vec.y, v.vec.z, '~g~E~w~ - Load ($'..v.cost..')')
 						if IsControlJustPressed(0,38) then
 							TriggerServerEvent('qb-overlord-laundering:load', k)
