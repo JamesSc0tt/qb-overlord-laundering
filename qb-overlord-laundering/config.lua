@@ -1,4 +1,4 @@
-QBCore = exports['qb-core']:GetSharedObject() -- do not touch
+QBCore = exports['qb-core']:GetCoreObject() -- do not touch
 
 
 CONFIG = {} -- do not touch
