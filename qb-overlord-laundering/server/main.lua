@@ -1,3 +1,5 @@
+local QBCore = exports['qb-core']:GetCoreObject()
+
 RegisterServerEvent('qb-overlord-laundering:use', function(key)
 	local machine = CONFIG['Machines'][key]
 	local Player = QBCore.Functions.GetPlayer(source)
@@ -23,7 +25,7 @@ RegisterServerEvent('qb-overlord-laundering:load', function(machine)
 	local total_worth = 0
 
 	for itemkey, item in pairs(Player.PlayerData.items) do
-		if item.name == 'markedbills' then
+		if item.name == CONFIG['item'] then
 			num_bags = num_bags + 1
 			if type(item.info) ~= 'string' and tonumber(item.info.worth) then
 				total_worth = total_worth + tonumber(item.info.worth)
@@ -70,7 +72,7 @@ RegisterServerEvent('qb-overlord-laundering:load', function(machine)
 	CONFIG['Machines'][machine]['player'] = src
 	CONFIG['Machines'][machine]['worth'] = math.floor(real_worth) -- floor it cause % be .000314010401!
 
-	TriggerClientEvent('QBCore:Notify', src, 'You loaded '..num_bags..'x '..QBCore.Shared.Items['markedbills'].label..' ($'..total_worth..')', 'success')
+	TriggerClientEvent('QBCore:Notify', src, 'You loaded '..num_bags..'x '..QBCore.Shared.Items[CONFIG['item']].label..' ($'..total_worth..')', 'success')
 
 	Citizen.Wait(timer) -- probably a better way to do this but not too fussed about serverside performance
 

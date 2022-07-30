@@ -1,3 +1,4 @@
+local QBCore = exports['qb-core']:GetCoreObject()
 local currentMachine = -1
 local globalCoords = vector3(0,0,0)
 local notWashing = true

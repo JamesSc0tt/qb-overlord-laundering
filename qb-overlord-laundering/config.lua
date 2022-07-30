@@ -1,5 +1,4 @@
-QBCore = exports['qb-core']:GetCoreObject() -- do not touch
-
+local QBCore = exports['qb-core']:GetCoreObject() -- do not touch
 
 CONFIG = {} -- do not touch
 
@@ -10,6 +9,8 @@ CONFIG['TimePerItem'] = math.random(1,5) -- time in minutes each additional item
 --CONFIG['TimePerItem'] = 1
 
 CONFIG['PoliceIncrease'] = 0.05 -- percentage to increase per officer around
+
+CONFIG['item'] = 'markedbills' -- Item name
 
 CONFIG['Machines'] = {
 	{name="Washing Machine", cost="5", perc=0.6, vec=vector3(1136.28, -992.11, 46.11), available=true, finished=false, player=0, worth=0, lastsound=0},
