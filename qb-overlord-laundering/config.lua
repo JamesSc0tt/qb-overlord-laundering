@@ -1,6 +1,5 @@
 local QBCore = exports['qb-core']:GetCoreObject() -- do not touch
 
-
 CONFIG = {} -- do not touch
 
 CONFIG['BaseTime'] = math.random(20,35) -- time in minutes the washing machine always takes

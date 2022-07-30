@@ -4,7 +4,7 @@ game 'gta5'
 description 'QB-Overlord-Laundering'
 version '1.0.0'
 
-shared_scripts { 
+shared_scripts {
 	'@qb-core/shared/gangs.lua',
 	'@qb-core/shared/items.lua',
 	'@qb-core/shared/jobs.lua',

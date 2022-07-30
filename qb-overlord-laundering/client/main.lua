@@ -23,7 +23,7 @@ Citizen.CreateThread(function()
 				end
 			else
 				if not displayed and #(v.vec - globalCoords) < 1.0 then
-					if v.available then
+					if v.available and notWashing then
 						DrawText3Ds(v.vec.x, v.vec.y, v.vec.z, '~g~E~w~ - Load ($'..v.cost..')')
 						if IsControlJustPressed(0,38) then
 							TriggerServerEvent('qb-overlord-laundering:load', k)
